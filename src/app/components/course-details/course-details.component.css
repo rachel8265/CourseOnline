@@ -1,0 +1,14 @@
+.courses-container {
+    display: flex;
+    background-color: blue;
+  }
+  
+  .courses-list {
+    width: 30%; /* רוחב רשימת הקורסים */
+   padding: 20px;
+  }
+  
+  .course-details {
+    width: 70%; /* רוחב פרטי הקורס */
+    padding: 20px;
+   } 

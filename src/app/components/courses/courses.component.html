@@ -1,0 +1,15 @@
+<div class="courses-container">
+    <div class="courses-list">
+        <h2>List of courses</h2>
+        @for (course of courses; track $index) {
+            <button (click)="selectedCourse=course" class="course-button">
+                <h3>{{ course.title }}</h3>
+            </button>
+        }
+    </div>
+    <div class="course-details">
+        @if (selectedCourse) {
+            <app-course-details [course]="selectedCourse"></app-course-details>
+        }
+    </div>
+</div>

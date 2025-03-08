@@ -1,0 +1,8 @@
+<h1>list ---------------</h1>
+<div class="course-details-container">
+    <h2>{{ course.title }}</h2>
+    <p>{{ course.description }}</p>
+    <h3>רשימת שיעורים:</h3>
+    <app-lessons [course]="course"></app-lessons>
+    <button (click)="downloadMaterials(course)">הורד חומרים</button>
+  </div>

@@ -1,0 +1,41 @@
+.courses-container {
+    display: flex;
+    gap: 10px; /* רווח בין הרשימה לפרטים */
+    padding: 20px;
+    background-color: #f9f9f9; /* צבע רקע בהיר */
+    border-radius: 8px; /* פינות מעוגלות */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); צל עדין */
+}
+
+.courses-list {
+    flex: 1;
+    max-width: 300px; /* גבול רוחב לרשימת הקורסים */
+    background-color: #ffffff; /* צבע רקע לבן */
+    border-radius: 8px; /* פינות מעוגלות */
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* צל עדין */
+}
+
+.course-button {
+    width: 100%; /* כפתור תופס את כל רוחב הרשימה */
+    background-color: #09806c; /* צבע רקע של הכפתור */
+    color: white; /* צבע טקסט לבן */
+    border: none; /* ללא גבול */
+    border-radius: 10px; /* פינות מעוגלות */
+    padding: 10px;
+    margin: 10px 0; /* רווח בין הכפתורים */
+    cursor: pointer; /* מצביע על כך שהכפתור ניתן ללחיצה */
+    transition: background-color 0.3s; /* אנימציה לצבע הרקע */
+}
+
+.course-button:hover {
+    background-color: #23b685; /* צבע רקע כשמעבירים מעל הכפתור */
+}
+
+.course-details {
+    flex: 2; /* תופס יותר מקום מאשר רשימת הקורסים */
+    background-color: #ffffff; /* צבע רקע לבן */
+    border-radius: 8px; /* פינות מעוגלות */
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* צל עדין */
+}
