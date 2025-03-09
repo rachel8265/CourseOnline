@@ -18,14 +18,15 @@
 
 .course-button {
     width: 100%; /* כפתור תופס את כל רוחב הרשימה */
-    background-color: #09806c; /* צבע רקע של הכפתור */
-    color: white; /* צבע טקסט לבן */
+    background-color: #aafff1; /* צבע רקע של הכפתור */
+    color: rgb(1, 1, 1); /* צבע טקסט לבן */
     border: none; /* ללא גבול */
-    border-radius: 10px; /* פינות מעוגלות */
-    padding: 10px;
+    border-radius: 7px; /* פינות מעוגלות */
+    /* padding: 10px; */
     margin: 10px 0; /* רווח בין הכפתורים */
     cursor: pointer; /* מצביע על כך שהכפתור ניתן ללחיצה */
     transition: background-color 0.3s; /* אנימציה לצבע הרקע */
+    display: flex;
 }
 
 .course-button:hover {
@@ -38,4 +39,35 @@
     border-radius: 8px; /* פינות מעוגלות */
     padding: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* צל עדין */
+}
+.example-label {
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 8px;
+    min-width: 120px;
+  }
+  .course-item {
+    display: flex;
+    align-items: center; /* מרכז את התוכן אנכית */
+    justify-content: space-between; /* מפזר את התוכן בין שני הקצוות */
+    margin: 10px 0; /* רווח בין הקורסים */
+}
+
+
+.example-h2 {
+    margin: 10px;
+  }
+  
+  .example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+  }
+  
+  .example-margin {
+    margin: 10px;
+  }
+  .example-margin.mat-slide-toggle-checked {
+    background-color: #4caf50; /* צבע כאשר הכפתור מופעל */
 }

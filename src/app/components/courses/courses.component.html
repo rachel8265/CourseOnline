@@ -3,13 +3,27 @@
         <h2>List of courses</h2>
         @for (course of courses; track $index) {
             <button (click)="selectedCourse=course" class="course-button">
-                <h3>{{ course.title }}</h3>
-            </button>
+              
+           
+            <section class="example-section">
+                <mat-slide-toggle
+                    class="example-margin"
+                    [checked]="checked"
+                    [disabled]="disabled" 
+                    (change)="onToggleChange($event, course)">>
+                   
+                </mat-slide-toggle>
+              </section><h3>{{ course.title }}  </h3>
+             
+         </button>
         }
     </div>
     <div class="course-details">
         @if (selectedCourse) {
             <app-course-details [course]="selectedCourse"></app-course-details>
+            
         }
     </div>
 </div>
+
+   

@@ -10,7 +10,7 @@ export class CourseService {
   private apiUrl = 'http://localhost:3000/api';
   constructor(private http: HttpClient) { }
   getCourses(): Observable<Course[]> {
-    const token = sessionStorage.getItem('userToken');
+    const token = sessionStorage.getItem('token');
     console.log("token "+token);
     
     const headers = new HttpHeaders({
