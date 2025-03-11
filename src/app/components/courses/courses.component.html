@@ -1,29 +1,43 @@
-<div class="courses-container">
+ <div class="courses-container">
     <div class="courses-list">
         <h2>List of courses</h2>
         @for (course of courses; track $index) {
-            <button (click)="selectedCourse=course" class="course-button">
-              
-           
-            <section class="example-section">
-                <mat-slide-toggle
-                    class="example-margin"
-                    [checked]="checked"
-                    [disabled]="disabled" 
-                    (change)="onToggleChange($event, course)">>
-                   
-                </mat-slide-toggle>
-              </section><h3>{{ course.title }}  </h3>
-             
-         </button>
+        <button (click)="selectedCourse=course" class="course-button">
+
+            @if (isTeacher.toLowerCase() != "teacher"){
+                <section class="example-section">
+                    <mat-slide-toggle class="example-margin" 
+                        [checked]="course.checked" 
+                        [disabled]="false"
+                        (change)="onToggleChange($event, course)">
+                    </mat-slide-toggle>
+                </section>
+            }@else {
+            <section>
+                <button mat-icon-button (click)="updateCourse(course)" aria-label="עדכון קורס">
+                    <mat-icon>edit</mat-icon> 
+                </button>
+                <button mat-icon-button (click)="deleteCourse(course)" aria-label="מחיקת קורס">
+                    <mat-icon>delete</mat-icon> 
+                </button>
+            </section>}
+            <h3>{{ course.title }} </h3>
+
+        </button>
+        }
+        @if (isTeacher.toLowerCase() == "teacher"){
+            {{isTeacher}}
+        <button mat-icon-button (click)="addCourse(false)" aria-label="הוסף קורס">
+            <mat-icon>add</mat-icon>
+        </button>
+        Add a course
         }
     </div>
+
     <div class="course-details">
         @if (selectedCourse) {
-            <app-course-details [course]="selectedCourse"></app-course-details>
             
+            <app-course-details [course]="selectedCourse"></app-course-details>
         }
     </div>
 </div>
-
-   

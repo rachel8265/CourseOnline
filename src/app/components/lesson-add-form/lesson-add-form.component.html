@@ -1,0 +1,8 @@
+<div>
+   <form (ngSubmit)="addLesson()">
+        <input [(ngModel)]="lessonTitle" name="lessonTitle" placeholder="Lesson Title" required />
+        <textarea [(ngModel)]="lessonContent" name="lessonContent" placeholder="Lesson Content" required></textarea>
+        <button type="submit">save Lesson</button>
+    </form> 
+    
+</div> 

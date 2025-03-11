@@ -3,4 +3,5 @@ export interface Course {
     title: string;
     description: string;
     teacherId: number;
+    checked:boolean
   }

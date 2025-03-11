@@ -6,7 +6,7 @@ import { LoginFormComponent } from '../login-form/login-form.component';
 import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-login-button',
-  imports: [MatButtonModule, RouterLink, RouterOutlet, MatDialogModule, LoginFormComponent, HttpClientModule,],
+  imports: [MatButtonModule, MatDialogModule,],
   templateUrl: './login-button.component.html',
   styleUrl: './login-button.component.css'
 })

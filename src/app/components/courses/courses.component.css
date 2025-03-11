@@ -30,7 +30,7 @@
 }
 
 .course-button:hover {
-    background-color: #23b685; /* צבע רקע כשמעבירים מעל הכפתור */
+    background-color: #c8f2e4; /* צבע רקע כשמעבירים מעל הכפתור */
 }
 
 .course-details {
@@ -70,4 +70,13 @@
   }
   .example-margin.mat-slide-toggle-checked {
     background-color: #4caf50; /* צבע כאשר הכפתור מופעל */
+}
+button.mat-icon-button {
+  margin: 4px; /* מרווחים בין הכפתורים */
+  background-color: transparent; /* צבע רקע שקוף */
+  border: none; /* ללא גבול */
+}
+
+button.mat-icon-button:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* צבע רקע בעת ריחוף */
 }

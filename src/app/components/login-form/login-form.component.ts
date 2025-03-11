@@ -9,21 +9,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { UserService } from '../../service/user.service';
+import { UserService } from '../../service/user/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { log } from 'node:console';
-import { User } from '../../modal/user';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-login-form',
-  imports: [FormsModule, JsonPipe, MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule,],
+  imports: [FormsModule, MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule,],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.css'
 })
 export class LoginFormComponent {
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute) { }
 
-  // this.student = this.studentService.getStudentById(this.studentId);
+
   mail: string;
   password: string;
   name: string;
@@ -36,7 +36,7 @@ export class LoginFormComponent {
 
 
   login() {
-    this.userService.login( this.mail, this.password);
+    this.userService.login(this.mail, this.password);
 
   }
 }

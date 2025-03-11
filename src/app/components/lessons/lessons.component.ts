@@ -1,7 +1,9 @@
-import { Component, Input, input } from '@angular/core';
-import { Course } from '../../modal/course';
+import { Component, Input, input, OnInit, SimpleChanges } from '@angular/core';
+import { Course } from '../../models/course';
 import { LessonService } from '../../service/lesson/lesson.service';
-import { Lesson } from '../../modal/lesson';
+import { Lesson } from '../../models/lesson';
+import { Observable } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-lessons',
@@ -9,20 +11,31 @@ import { Lesson } from '../../modal/lesson';
   templateUrl: './lessons.component.html',
   styleUrl: './lessons.component.css'
 })
-export class LessonsComponent {
+export class LessonsComponent implements OnInit {
 constructor(private lessonService:LessonService){}//,private activatedRoute: ActivatedRoute, private router: Router){}
 lessons:Lesson[]=[]
+@Input() course!: Course
 
-ngOnInit():void{
- this.lessonService.getLessonsBycourseId(this.course.teacherId).subscribe((data: Lesson[]) => {
-  this.lessons = data; console.log(this.lessons);
-  console.log(this.course);
-  
-})}
+lesson$:Observable<Lesson[]>|undefined = this.lessonService.lessons$;
 
- @Input() course!: Course
-
-
-
-
+ngOnInit(): void {
+  this.loadLessons(); // טען שיעורים כאשר הקומפוננט נטען
 }
+
+ngOnChanges(changes: SimpleChanges): void {
+  if (changes['course'] && this.course) {
+    this.loadLessons(); // טען שיעורים כאשר הקורס משתנה
+  }
+}
+
+loadLessons(): void {
+  this.lessonService.getLesson(this.course.id);
+  this.lessonService.lessons$.subscribe(l=>{this.lessons=l})
+  this.lesson$ = this.lessonService.lessons$; 
+}
+}
+
+ 
+
+
+
