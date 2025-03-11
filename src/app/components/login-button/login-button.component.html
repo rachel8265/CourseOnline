@@ -1,9 +1,49 @@
-<section>  
+
+
+<section class="home-section">  
+    <h1>Welcome to Our Platform</h1>
+
+    <p>שימו לב!!!!!!!
+    
+     לצערינו חלה תקלה במערכת ולכן כדי להשתמש באתר זה לעיתים תצטרכו לרענן את הדף
+    </p>
     <div class="example-button-row">
-      
-      <button  mat-raised-button (click)="openDialog(false)">login</button>
-      <button mat-raised-button (click)="openDialog(true);" >register</button>
+        <button mat-raised-button (click)="openDialog(false)">
+            <mat-icon>login</mat-icon> Login
+        </button>
+        <button mat-raised-button (click)="openDialog(true);">
+            <mat-icon>person_add</mat-icon> Register
+        </button>
     </div>
-  </section>
-  
- 
+    <div class="info-cards">
+        <mat-card class="info-card">
+            <mat-card-title>Feature 1</mat-card-title>
+            <mat-card-content>
+                <p>Details about feature 1.</p>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="info-card">
+            <mat-card-title>Feature 2</mat-card-title>
+            <mat-card-content>
+                <p>Details about feature 2.</p>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="info-card">
+            <mat-card-title>Feature 3</mat-card-title>
+            <mat-card-content>
+                <p>Details about feature 3.</p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</section>
+<footer class="custom-footer">
+    <div class="footer-content">
+        <h2>About Our Platform</h2>
+        <p>We provide a comprehensive solution for educators to share resources and connect.</p>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Us</a>
+        </div>
+    </div>
+</footer>

@@ -4,9 +4,16 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { LoginFormComponent } from '../login-form/login-form.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
+// import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
 @Component({
   selector: 'app-login-button',
-  imports: [MatButtonModule, MatDialogModule,],
+  imports: [MatButtonModule, MatDialogModule,MatIconModule,
+    
+    MatCardModule,  ],
   templateUrl: './login-button.component.html',
   styleUrl: './login-button.component.css'
 })

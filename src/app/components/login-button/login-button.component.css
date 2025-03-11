@@ -1,8 +1,57 @@
+.home-section {
+  background-color: #aafff1; /* צבע רקע */
+  color: #000; /* צבע טקסט */
+  text-align: center;
+  padding: 50px 20px;
+}
 
-  .example-button-row {
-    display: table-cell;
-    max-width: 600px;
-    margin: 8px 8px 8px 0;
-  }
- 
- 
+h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.example-button-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+button {
+  margin: 0 10px;
+  font-size: 16px;
+  padding: 10px 20px;
+}
+
+.info-cards {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.info-card {
+  margin: 10px;
+  width: 250px;
+  background-color: rgb(255, 255, 255); /* צבע רקע לכרטיסים */
+}
+.custom-footer {
+  background-color: #2c3e50; /* צבע רקע */
+  color: white; /* צבע טקסט */
+  padding: 20px; /* ריווח פנימי */
+  text-align: center; /* יישור טקסט למרכז */
+  position: fixed; /* מיקום קבוע */
+  bottom: 0; /* מיקום בתחתית */
+  width: 100%; /* רוחב מלא */
+  transform: translateY(100%); /* מתחיל מחוץ למסך */
+  transition: transform 0.5s ease; /* אנימציה חלקה */
+}
+
+.custom-footer.show {
+  transform: translateY(0); /* מחזיר למיקום הרגיל */
+}
+
+.hidden {
+  display: none; /* לא להציג אם אין צורך */
+}
+p{
+  font-size: 25px;
+}

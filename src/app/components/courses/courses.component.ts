@@ -21,7 +21,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.css'
 })
-export class CoursesComponent {
+export class CoursesComponent  {
 
   courses: Course[] = [];
   registeredCourses: Course[] = []; // רשימה של קורסים שהמשתמש רשום להם
@@ -36,7 +36,11 @@ export class CoursesComponent {
     this.loadRegisteredCourses();
     this.isTeacher = sessionStorage.getItem("role") as string;
   }
+  handleUrlChange(newUrl: string) {
 
+    this.loadCourses()
+    console.log('Doing something with the new URL: ', newUrl);
+  }
   loadCourses() {
     this.courseService.getCourses();
     this.courseService.courses$.subscribe(courses => {
