@@ -3,9 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { LoginFormComponent } from '../login-form/login-form.component';
-import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
-// import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -22,13 +20,8 @@ export class LoginButtonComponent {
   constructor(private router: Router) { }
 
   openDialog(isRegister:boolean) {
-
     const dialogRef = this.dialog.open(LoginFormComponent);
     dialogRef.componentInstance.isRegister = isRegister; 
-    dialogRef.afterClosed().subscribe(result => {
-      if(result)
-        this.router.navigate(['/courses']);
-    });
   }
 
   

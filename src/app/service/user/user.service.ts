@@ -1,15 +1,15 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
-import { error } from 'node:console';
 import { User } from '../../models/user';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   private apiUrl = 'http://localhost:3000/api';
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private router: Router) { }
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.apiUrl}/users`);
@@ -19,32 +19,28 @@ export class UserService {
     return this.http.get<User>(`${this.apiUrl}/users/${id}`);
   }
 
-
-  register(user: User): void {
-    this.http.post<any>(`${this.apiUrl}/auth/register`, user).pipe(
+  register(user: User): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/auth/register`, user).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 500) {
-          alert("you allready register");
+          return throwError("you already registered");
         }
-        // מחזיר שגיאה אם יש בעיה אחרת
-        return throwError("you allready register");
+        return throwError("Registration failed");
       })
-    ).subscribe(result => {
-      sessionStorage.setItem('token', result.token)
-
-      sessionStorage.setItem("role", result.role)
-      sessionStorage.setItem("userId", result.userId)
-    })
+    );
   }
-
+  
   // התחברות של משתמש
-  login(email: string, password: string): void {
-    this.http.post<any>(`${this.apiUrl}/auth/login`, { email, password }).subscribe(
-      result =>{
-        sessionStorage.setItem('token', result.token)
-        sessionStorage.setItem("role", result.role)
-        sessionStorage.setItem("userId", result.userId)
-      })
+  login(email: string, password: string): Observable<any> {
+ return   this.http.post<any>(`${this.apiUrl}/auth/login`, { email, password }).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 404) 
+          alert("User not found");
+        if (error.status === 400) 
+        alert("Invalid credentials")
+        // מחזיר שגיאה אם יש בעיה אחרת
+        return throwError("Error logging in");
+      }))
 }
   
   }

@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { UserService } from '../../service/user/user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { log } from 'node:console';
 import { User } from '../../models/user';
 
@@ -21,7 +21,7 @@ import { User } from '../../models/user';
   styleUrl: './login-form.component.css'
 })
 export class LoginFormComponent {
-  constructor(private userService: UserService, private activatedRoute: ActivatedRoute) { }
+  constructor(private userService: UserService, private activatedRoute: ActivatedRoute,private router:Router) { }
 
 
   mail: string;
@@ -30,13 +30,42 @@ export class LoginFormComponent {
   role: string;
   isRegister: boolean = false;
 
+  // register() {
+  //   this.userService.register(new User(this.name, this.mail, this.password, this.role));
+  // }
+
   register() {
-    this.userService.register(new User(this.name, this.mail, this.password, this.role));
+    this.userService.register(new User(this.name, this.mail, this.password, this.role)).subscribe({
+      next: (result) => {
+        sessionStorage.setItem('token', result.token);
+        sessionStorage.setItem("role", result.role);
+        sessionStorage.setItem("userId", result.userId);
+      this.router.navigate(['/courses']);
+
+        // this.closeDialog(true); // מחזיר true לדיאלוג
+      },
+      error: (error) => {
+        alert(error); // מציג הודעת שגיאה
+        // this.closeDialog(false); // מחזיר false לדיאלוג
+      }
+    });
   }
-
-
+  
   login() {
-    this.userService.login(this.mail, this.password);
+    this.userService.login(this.mail, this.password).subscribe({
+      next: (result) => {
+        sessionStorage.setItem('token', result.token);
+        sessionStorage.setItem("role", result.role);
+        sessionStorage.setItem("userId", result.userId);
+      this.router.navigate(['/courses']);
+
+        // this.closeDialog(true); // מחזיר true לדיאלוג
+      },
+      error: (error) => {
+        alert(error); // מציג הודעת שגיאה
+        // this.closeDialog(false); // מחזיר false לדיאלוג
+      }
+    });
 
   }
 }
